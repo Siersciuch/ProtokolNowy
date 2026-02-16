@@ -1,0 +1,46 @@
+name: hh_protokol
+description: Helium House - Protokół przekazania (testery / stoisko / usterki).
+publish_to: 'none'
+version: 0.1.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # UX / utils
+  intl: ^0.20.2
+  path: ^1.9.1
+  collection: ^1.19.1
+
+  # Storage
+  flutter_secure_storage: ^10.0.0
+  shared_preferences: ^2.5.4
+  sqflite: ^2.4.2
+  path_provider: ^2.1.5
+
+  # Media & capture
+  permission_handler: ^12.0.1
+  image_picker: ^1.2.1
+  mobile_scanner: ^7.1.4
+  nfc_manager: ^4.0.2
+  signature: ^6.3.0
+
+  # PDF / ZIP / Share
+  pdf: ^3.11.3
+  printing: ^5.14.2
+  archive: ^3.6.1
+  share_plus: ^12.0.1
+
+  crypto: ^3.0.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+flutter:
+  uses-material-design: true
