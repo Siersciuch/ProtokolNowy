@@ -1,0 +1,41 @@
+name: Build Android APK (debug)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Create project + apply patch + build APK
+        run: |
+          flutter --version
+          flutter create hh_protokol --platforms=android --org eu.heliumhouse --project-name hh_protokol
+          rsync -a patch/ hh_protokol/
+          cd hh_protokol
+          flutter pub get
+          flutter build apk --debug
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hh_protokol-debug-apk
+          path: hh_protokol/build/app/outputs/flutter-apk/app-debug.apk
